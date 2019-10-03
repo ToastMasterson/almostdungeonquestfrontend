@@ -1,22 +1,119 @@
-.App {
-  text-align: center;
+.main-area {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.start-game {
+  border-style: solid;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-flow: column;
+  width: 600px;
+  margin: auto;
+}
+.start-game-button {
+  width: 80px;
+  height: 50px;
+  margin: auto;
 }
 
-.App-link {
-  color: #09d3ac;
+.start-game-h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose-a-character {
+  display: flex;
+  justify-content: center;
+}
+
+.choose-character {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+.choose-character-card{
+  display: flex;
+  flex-flow: column;
+  width: 250px;
+  justify-content: center;
+}
+.choose-character-header{
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  margin: 1px;
+}
+.choose-character-title {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  margin: 1px;
+}
+.choose-character-image{
+  margin: auto;
+  width: 150px;
+}
+.choose-character-stats {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: auto;
+  width: 92px;
+}
+
+.game-board {
+    display: grid;
+    width: 670px;
+    height: 520px;
+    border-style: solid;
+    margin-bottom: 25px;
+    /* grid-template-columns: repeat(12,50px); */
+    /* grid-auto-rows: 50px; */
+  }
+  
+  .board-container {
+  background-image: url("./images/gameboardcropped.jpg");
+  background-size: 779px 637px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+  border-style: solid;
+}
+
+.empty-tile {
+  border: 1px;
+  border-style: solid;
+  width: 50px;
+  height: 50px;
+}
+
+.start-tile {
+  width: 50px;
+  height: 50px;
+}
+
+.tile-image {
+  width: 50px;
+}
+
+.main-header {
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.main-title {
+  color: whitesmoke;
+}
+
+.events-image{
+  display: flex;
+  height: 290px;
+  margin: auto;
 }

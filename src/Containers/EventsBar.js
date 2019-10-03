@@ -36,10 +36,10 @@ export default class EventsBar extends Component{
 
     renderCard = () => (
         <><div className="event-image-container">
-            <img className="events-image" alt="event" src={this.props.currentCard.image} />
+            <img className="event-image" alt="event" src={this.props.currentCard.image} />
             </div>
             <div className="event-info-container">
-                <div><h1>{this.props.currentCard.description}</h1></div>
+                <div><h1 className="event-message">{this.props.currentCard.description}</h1></div>
             </div>
         </>
     )
@@ -53,10 +53,10 @@ export default class EventsBar extends Component{
                     : this.props.currentCard
                         ? this.renderCard()
                         :<><div className="event-image-container">
-                            <img className="events-image" alt="event" src={this.state.image} />
+                            <img className="event-image" alt="event" src={this.state.image} />
                             </div>
                             <div className="event-info-container">
-                                <div><h1>Please select a tile to start on...</h1></div>
+                                <div><h1 className="event-message">Please select a tile to start on...</h1></div>
                             </div>
                         </>
                 }

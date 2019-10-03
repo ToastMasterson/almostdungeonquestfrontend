@@ -17,7 +17,14 @@ const Start = (props) => {
     )
 
         return(
-            <div onClick={handleClick} className="start-tile" number={props.number}>
+            <div 
+                onClick={handleClick} 
+                className={props.didStart 
+                    ? props.canMove 
+                        ? "selectable-tile"
+                        : "start-tile" 
+                    : "start-tile-glow"} 
+                number={props.number}>
                 
             </div>
         )

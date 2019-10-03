@@ -76,7 +76,7 @@ class Monster extends Component {
     )
 
     renderOutcome = () => (
-        <div>
+        <div className="event-message">
             {this.state.combatMessage}<br/>
             {`Monster has ${this.state.lifeValue} life points left`}
         </div>
@@ -86,7 +86,7 @@ class Monster extends Component {
         return(
             <div>
                 <div className="event-image-container">
-                    <img className="events-image" alt="event" src={this.props.monster.image} />
+                    <img className="event-image" alt="event" src={this.props.monster.image} />
                 </div>
                 <div className="event-info-container">
                     {this.state.isWorking

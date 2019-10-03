@@ -15,9 +15,9 @@ export default class Tile extends Component {
     }
     render(){
         return(
-            <div className="empty-tile" onClick={this.props.generateCard === null ? null : this.handleClick} number={this.props.number}>
+            <div className={this.props.canMoveTo ? "selectable-tile" : "empty-tile"} onClick={this.props.generateCard === null ? null : this.handleClick} number={this.props.number}>
                 {this.props.tile
-                    ? <img className="tile-image" src={this.props.tile.image} />
+                    ? <img alt="empty" className="tile-image" src={this.props.tile.image} />
                     : null
                 }
             </div>

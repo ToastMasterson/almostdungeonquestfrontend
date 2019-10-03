@@ -34,11 +34,12 @@ class Monster extends Component {
                     this.setState({combatMessage: "Successful hit! Monster loses 2 life points", lifeValue: this.state.lifeValue - 2}, () => window.setTimeout(() => this.checkMonsterLife(), 2000))
                 } else {
                     this.props.playerLife(1)
-                    this.setState({combatMessage: "Monster got around you! Lose 1 life.", lifeValue: this.state.lifeValue - 1}, () => window.setTimeout(() => this.checkMonsterLife(), 2000))
+                    this.setState({combatMessage: "Monster got around you! Lose 1 life."}, () => window.setTimeout(() => this.checkMonsterLife(), 2000))
                 }
                 break;
             case "Slash":
                 if (monsterMove === "Mighty Blow"){
+                    this.props.playerLife(1)
                     this.setState({combatMessage: "Monster got around you! Lose 1 life."}, () => window.setTimeout(() => this.checkMonsterLife(), 2000))
                 } else if (monsterMove === "Slash"){
                     this.props.playerLife(1)

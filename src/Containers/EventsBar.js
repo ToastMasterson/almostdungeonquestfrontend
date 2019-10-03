@@ -11,10 +11,7 @@ export default class EventsBar extends Component{
     }
 
     checkCardType = () => {
-        console.log(this.props.currentCard.kind)
-        console.log(this.props.currentEvent)
         if (this.props.currentEvent === "Move"){
-            console.log("here")
             return <Move />
         }
         else{

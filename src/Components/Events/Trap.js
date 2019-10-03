@@ -18,7 +18,8 @@ class Trap extends Component {
             case "Cave In":
                 rollTwelve < this.props.player.agility
                     ? this.setState({message: "You've successfully passed through! Please continue."}, () => window.setTimeout(()=>this.props.continue(), 2000))
-                    : this.setState({message: `You rolled a ${rollTwelve}.  Lose 1 life and continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+                    : this.props.playerLife(1) 
+                        this.setState({message: `You rolled a ${rollTwelve}.  Lose 1 life and continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
                 break;
             case "Crossfire":
                 let cFDamage = rollTwelve - this.props.player.armor
@@ -36,7 +37,7 @@ class Trap extends Component {
                 passingNumbers.includes(rollSix)
                     ? this.setState({message: `You rolled a ${rollSix}. You kill the spider and move on!`}, () => window.setTimeout(()=>this.props.continue(), 2000))
                     : this.props.playerLife(1)
-                        this.setState({message: `You rolled a ${rollSix}. You lose 1 life and must keep fighting.`})
+                        this.setState({message: `You rolled a ${rollSix}. You lose 1 life and must keep fighting.`}, () => window.setTimeout(() => this.setState({isWorking: false}), 2000))
                 default:
                 break;
         }

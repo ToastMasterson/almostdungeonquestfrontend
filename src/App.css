@@ -66,7 +66,7 @@
     display: grid;
     width: 670px;
     height: 520px;
-    border-style: solid;
+
     margin-bottom: 25px;
     /* grid-template-columns: repeat(12,50px); */
     /* grid-auto-rows: 50px; */
@@ -86,8 +86,6 @@
 }
 
 .empty-tile {
-  border: 1px;
-  border-style: solid;
   width: 50px;
   height: 50px;
 }
@@ -99,6 +97,10 @@
 
 .tile-image {
   width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-header {

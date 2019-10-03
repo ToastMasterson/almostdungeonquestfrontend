@@ -45,7 +45,6 @@ export default class GameBoard extends Component{
     }
 
     goBack = (tile, number) => {
-        console.log(tile, number)
         this.state.startPoints.includes(parseInt(number))
             ? this.setState({
                 currentTile: number,
@@ -60,7 +59,7 @@ export default class GameBoard extends Component{
                 bottom: tile.bottom,
                 left: tile.left,
                 right: tile.right
-            }, () => this.updateMoves())
+            }, () => this.updateMoves(), this.props.drawRoomCard())
     }
 
     updateMoves = () => {
@@ -82,16 +81,20 @@ export default class GameBoard extends Component{
     }
 
     generateCard = (tile) => {
-        if (parseInt(tile) === this.state.currentTile - 1){
+        console.log("here")
+        console.log(parseInt(tile))
+        console.log(this.state.currentTile)
+        if (parseInt(tile) === parseInt(this.state.currentTile) - 1){
             this.setState({direction: "right"}, () => this.matchTile(tile))
         } 
-        else if (parseInt(tile) === this.state.currentTile + 1){
+        else if (parseInt(tile) === parseInt(this.state.currentTile) + 1){
+            console.log("left")
             this.setState({direction: "left"}, () => this.matchTile(tile))
         }
-        else if (parseInt(tile) === this.state.currentTile - 13){
+        else if (parseInt(tile) === parseInt(this.state.currentTile) - 13){
             this.setState({direction: "bottom"}, () => this.matchTile(tile))
             }
-        else if (parseInt(tile) === this.state.currentTile + 13){
+        else if (parseInt(tile) === parseInt(this.state.currentTile) + 13){
             this.setState({direction: "top"}, () => this.matchTile(tile))
         }
         else { return null }
@@ -140,7 +143,7 @@ export default class GameBoard extends Component{
     occupyTiles = (tileArray) => {
         return tileArray.map(item => {
             if ( this.state.startPoints.includes(item)){
-                return <Start goBack={this.state.canMoveTo.includes(item) ? this.goBack : null} startGame={this.state.didStart ? null : this.startGame} key={item} number={item} didStart={this.state.didStart ? true : false} />
+                return <Start goBack={this.state.canMoveTo.includes(item) ? this.goBack : false} startGame={this.state.didStart ? null : this.startGame} key={item} number={item} didStart={this.state.didStart ? true : false} />
             } else if (this.state.dragonPoints.includes(item)){
                 return <Dragon key={item} />
             } else {

@@ -41,7 +41,7 @@ class Main extends Component {
         this.setState({
             currentCharacter: character,
             choseCharacter: true,
-            currentPlayerLife: this.state.currentCharacter.life_value
+            currentPlayerLife: character.life_value
         })
     }
 
@@ -55,7 +55,6 @@ class Main extends Component {
         console.log(kind)
         switch (kind) {
             case "Empty":
-                console.log(this.state.currentCard)
                 this.setState({inEvent: false, currentCard: false, currentEvent: "Move"})
                 break;
             case "Monster":

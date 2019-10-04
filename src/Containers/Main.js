@@ -112,7 +112,7 @@ class Main extends Component {
 
     render(){
         return(
-            <div>
+            <div className="game-div">
                 {this.state.choseCharacter
                     ? <div className="main-area">
                         <PlayerBar playerLife={this.state.currentPlayerLife} character={this.state.currentCharacter} />

@@ -2,7 +2,7 @@ import React from 'react'
 
 const YouWin = (props) => {
     return(
-        <div>
+        <div className="you-win">
             <h1>You've Won!</h1>
             <p>Would you like to play again?</p>
             <br/>

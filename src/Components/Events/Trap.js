@@ -19,7 +19,7 @@ class Trap extends Component {
         switch (this.props.trap.name) {
             case "Cave In":
                 console.log(rollTwelve, this.props.player.agility)
-                rollTwelve <= this.props.player.agility
+                (rollTwelve <= this.props.player.agility)
                     ? this.setState({message: "You've successfully passed through! Please continue."}, () => window.setTimeout(()=>this.props.continue(), 2000))
                     : this.props.playerLife(1) 
                         this.setState({message: `You rolled a ${rollTwelve}.  Lose 1 life and continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
@@ -27,26 +27,33 @@ class Trap extends Component {
             case "Crossfire":
                 console.log(rollTwelve, this.props.player.armor)
                 let cFDamage = rollTwelve - this.props.player.armor
+                if(cFDamage < 0){cFDamage = 0}
                 this.props.playerLife(cFDamage)
                 this.setState({message: `You rolled a ${rollTwelve}. You lose ${cFDamage} life points.  Please continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+                break;
             case "Poisonous Snakes":
                 console.log(rollSix, rollSix - 3)
                 let pSDamage = rollSix - 3
+                if (pSDamage < 0){pSDamage = 0}
                 this.props.playerLife(pSDamage)
                 this.setState({message: `You rolled a ${rollSix}. You lose ${pSDamage} life points. Please continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+                break;
             case "Explosion":
                 console.log(rollSix)
                 this.props.playerLife(rollSix)
                 this.setState({message: `You rolled a ${rollSix}. You lose ${rollSix} life points. Please continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+                break;
             case "Giant Spider":
                 console.log(rollSix)
                 const passingNumbers = [1,2,3]
                 passingNumbers.includes(rollSix)
                     ? this.setState({message: `You rolled a ${rollSix}. You kill the spider and move on!`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+
                     : this.props.playerLife(1)
                         this.setState({message: `You rolled a ${rollSix}. You lose 1 life and must keep fighting.`}, () => window.setTimeout(() => this.setState({isWorking: false}), 2000))
-                default:
                 break;
+            default:
+            break;
         }
 
     }
@@ -54,7 +61,7 @@ class Trap extends Component {
 
     render(){
         return(
-            <div>
+            <div className="event-div">
                 <div className="event-image-container">
                     <img className="event-image" alt="event" src={this.props.trap.image} />
                 </div>

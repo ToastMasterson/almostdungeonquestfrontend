@@ -21,7 +21,7 @@ export default class PlayerBar extends Component {
                 <h3 className="player-bar-title">{this.state.title}</h3>
                 <img alt="player" className="player-bar-image" src={this.state.image}></img>
                 <div className="player-bar-stats">
-                    <div className="stat-name"> Life Points: 
+                    <div className="stat-name"> Life: 
                         <div className="stat-number"> {this.props.playerLife} </div></div> 
                     <div className="stat-name"> Strength: 
                         <div className="stat-number"> {this.state.str} </div></div> 

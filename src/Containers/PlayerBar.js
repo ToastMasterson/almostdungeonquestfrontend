@@ -19,13 +19,18 @@ export default class PlayerBar extends Component {
                 <h1 className="player-bar-header">Player Stats:</h1>
                 <h2 className="player-bar-character">{this.state.character}</h2>
                 <h3 className="player-bar-title">{this.state.title}</h3>
-                <img className="player-bar-image" src={this.state.image}></img>
+                <img alt="player" className="player-bar-image" src={this.state.image}></img>
                 <div className="player-bar-stats">
-                <span>Life Points:</span> <span>{this.props.playerLife}</span>
-                    <span>Strength:</span> <span>{this.state.str}</span>
-                    <span>Agility:</span> <span>{this.state.agl}</span>
-                    <span>Armor:</span> <span>{this.state.arm}</span>
-                    <span>Luck:</span> <span>{this.state.luck}</span>
+                    <div className="stat-name"> Life: 
+                        <div className="stat-number"> {this.props.playerLife} </div></div> 
+                    <div className="stat-name"> Strength: 
+                        <div className="stat-number"> {this.state.str} </div></div> 
+                    <div className="stat-name"> Agility: 
+                        <div className="stat-number"> {this.state.agl} </div></div> 
+                    <div className="stat-name"> Armor: 
+                        <div className="stat-number"> {this.state.arm} </div></div> 
+                    <div className="stat-name"> Luck: 
+                        <div className="stat-number"> {this.state.luck} </div></div> 
                 </div>
             </div>
         )

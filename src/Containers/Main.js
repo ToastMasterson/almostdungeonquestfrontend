@@ -41,7 +41,7 @@ class Main extends Component {
         this.setState({
             currentCharacter: character,
             choseCharacter: true,
-            currentPlayerLife: this.state.currentCharacter.life_value
+            currentPlayerLife: character.life_value
         })
     }
 
@@ -55,7 +55,6 @@ class Main extends Component {
         console.log(kind)
         switch (kind) {
             case "Empty":
-                console.log(this.state.currentCard)
                 this.setState({inEvent: false, currentCard: false, currentEvent: "Move"})
                 break;
             case "Monster":
@@ -88,8 +87,9 @@ class Main extends Component {
         const randomIndex = Math.floor(Math.random() * Math.floor(this.state.roomCards.length))
         this.setState({
             currentCard: this.state.roomCards[randomIndex],
-            currentEvent: false
-        }, () => window.setTimeout(() => this.triggerEvent(this.state.roomCards[randomIndex].kind), 3000))
+            currentEvent: false,
+            inEvent: true
+        }, () => window.setTimeout(() => this.triggerEvent(this.state.roomCards[randomIndex].kind), 2000))
     }
 
     updatePlayerLife = (damage) =>{ 
@@ -106,13 +106,17 @@ class Main extends Component {
         })
     }
 
+    refreshPage = () => {
+        window.location.reload();
+    }
+
     render(){
         return(
-            <div>
+            <div className="game-div">
                 {this.state.choseCharacter
                     ? <div className="main-area">
                         <PlayerBar playerLife={this.state.currentPlayerLife} character={this.state.currentCharacter} />
-                        <GameBoard drawRoomCard={this.drawRoomCard} updateEvents={this.updateEvents}/>
+                        <GameBoard refreshPage={this.refreshPage} inEvent={this.state.inEvent} drawRoomCard={this.drawRoomCard} updateEvents={this.updateEvents}/>
                         <EventsBar player={this.state.currentCharacter} continue={this.continue} playerLife={this.updatePlayerLife} startGame={this.state.startGame} currentCard={this.state.currentCard} currentEvent={this.state.currentEvent} />
                     </div>
                     : <StartGame startGame={this.startGame} chooseCharacter={this.chooseCharacter} setCharacter={this.setCharacter} />

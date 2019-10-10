@@ -34,11 +34,12 @@ class Monster extends Component {
                     this.setState({combatMessage: "Successful hit! Monster loses 2 life points", lifeValue: this.state.lifeValue - 2}, () => window.setTimeout(() => this.checkMonsterLife(), 2000))
                 } else {
                     this.props.playerLife(1)
-                    this.setState({combatMessage: "Monster got around you! Lose 1 life.", lifeValue: this.state.lifeValue - 1}, () => window.setTimeout(() => this.checkMonsterLife(), 2000))
+                    this.setState({combatMessage: "Monster got around you! Lose 1 life."}, () => window.setTimeout(() => this.checkMonsterLife(), 2000))
                 }
                 break;
             case "Slash":
                 if (monsterMove === "Mighty Blow"){
+                    this.props.playerLife(1)
                     this.setState({combatMessage: "Monster got around you! Lose 1 life."}, () => window.setTimeout(() => this.checkMonsterLife(), 2000))
                 } else if (monsterMove === "Slash"){
                     this.props.playerLife(1)
@@ -66,18 +67,20 @@ class Monster extends Component {
 
     chooseOption = () => (
         <div>
-            <h1>Battle! Choose an Option!</h1>
-            <p>{`Monster has ${this.state.lifeValue} life points left`}</p><br/>
-            <button className="encounter-option" onClick={this.handleClick}>Mighty Blow</button>
-            <button className="encounter-option" onClick={this.handleClick}>Slash</button>
-            <button className="encounter-option" onClick={this.handleClick}>Dodge</button>
+            <h1 className="event-header">Battle! Choose an Option!</h1>
+            <p className="monster-life">{`Monster has ${this.state.lifeValue} life points left`}</p><br/>
+            <div className="encounter-options-div">
+                <button className="encounter-option" onClick={this.handleClick}>Mighty Blow</button>
+                <button className="encounter-option" onClick={this.handleClick}>Slash</button>
+                <button className="encounter-option" onClick={this.handleClick}>Dodge</button>
+            </div>
         </div>
     )
 
     renderOutcome = () => (
-        <div>
+        <div className="event-message">
             {this.state.combatMessage}<br/>
-            {`Monster has ${this.state.lifeValue} life points left`}
+            {/* {`Monster has ${this.state.lifeValue} life points left`} */}
         </div>
     )
     
@@ -85,7 +88,7 @@ class Monster extends Component {
         return(
             <div>
                 <div className="event-image-container">
-                    <img className="events-image" alt="event" src={this.props.monster.image} />
+                    <img className="event-image" alt="event" src={this.props.monster.image} />
                 </div>
                 <div className="event-info-container">
                     {this.state.isWorking

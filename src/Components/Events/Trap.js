@@ -14,31 +14,46 @@ class Trap extends Component {
         this.setState({isWorking: true})
         let rollTwelve = Math.floor(Math.random() * Math.floor(this.state.dTwelve.length))
         let rollSix = Math.floor(Math.random() * Math.floor(this.state.dSix.length))
+        console.log(this.props.player.agility)
+        console.log(rollTwelve, rollSix)
         switch (this.props.trap.name) {
             case "Cave In":
-                rollTwelve < this.props.player.agility
+                console.log(rollTwelve, this.props.player.agility)
+                (rollTwelve <= this.props.player.agility)
                     ? this.setState({message: "You've successfully passed through! Please continue."}, () => window.setTimeout(()=>this.props.continue(), 2000))
-                    : this.setState({message: `You rolled a ${rollTwelve}.  Lose 1 life and continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+                    : this.props.playerLife(1) 
+                        this.setState({message: `You rolled a ${rollTwelve}.  Lose 1 life and continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
                 break;
             case "Crossfire":
+                console.log(rollTwelve, this.props.player.armor)
                 let cFDamage = rollTwelve - this.props.player.armor
+                if(cFDamage < 0){cFDamage = 0}
                 this.props.playerLife(cFDamage)
                 this.setState({message: `You rolled a ${rollTwelve}. You lose ${cFDamage} life points.  Please continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+                break;
             case "Poisonous Snakes":
+                console.log(rollSix, rollSix - 3)
                 let pSDamage = rollSix - 3
+                if (pSDamage < 0){pSDamage = 0}
                 this.props.playerLife(pSDamage)
                 this.setState({message: `You rolled a ${rollSix}. You lose ${pSDamage} life points. Please continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+                break;
             case "Explosion":
+                console.log(rollSix)
                 this.props.playerLife(rollSix)
                 this.setState({message: `You rolled a ${rollSix}. You lose ${rollSix} life points. Please continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+                break;
             case "Giant Spider":
+                console.log(rollSix)
                 const passingNumbers = [1,2,3]
                 passingNumbers.includes(rollSix)
                     ? this.setState({message: `You rolled a ${rollSix}. You kill the spider and move on!`}, () => window.setTimeout(()=>this.props.continue(), 2000))
+
                     : this.props.playerLife(1)
-                        this.setState({message: `You rolled a ${rollSix}. You lose 1 life and must keep fighting.`})
-                default:
+                        this.setState({message: `You rolled a ${rollSix}. You lose 1 life and must keep fighting.`}, () => window.setTimeout(() => this.setState({isWorking: false}), 2000))
                 break;
+            default:
+            break;
         }
 
     }
@@ -46,15 +61,15 @@ class Trap extends Component {
 
     render(){
         return(
-            <div>
+            <div className="event-div">
                 <div className="event-image-container">
-                    <img className="events-image" alt="event" src={this.props.trap.image} />
+                    <img className="event-image" alt="event" src={this.props.trap.image} />
                 </div>
                 <div className="event-info-container">
-                    <div><h1>{this.props.trap.description}</h1></div>
+                    <div><h1 className="event-header">{this.props.trap.description}</h1></div>
                     {this.state.isWorking
-                        ? <p>{this.state.message}</p>
-                        : <button onClick={this.attempt}>Roll Dice</button>
+                        ? <p className="event-message">{this.state.message}</p>
+                        : <button className="event-button" onClick={this.attempt}>Roll Dice</button>
                     }
                         
                 </div>

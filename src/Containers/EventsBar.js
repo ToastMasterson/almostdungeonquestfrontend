@@ -15,14 +15,11 @@ export default class EventsBar extends Component{
             return <Move />
         }
         else{
-            console.log("here2")
             switch(this.props.currentCard.kind){
                 case "Monster":
-                    console.log("wtf")
                     return <Monster continue={this.props.continue} playerLife={this.props.playerLife} monster={this.props.currentEvent} />
                     break;
                 case "Trap":
-                    console.log("wtf")
                     return <Trap continue={this.props.continue} playerLife={this.props.playerLife} player={this.props.player} trap={this.props.currentEvent} /> 
                     break;
                 case "Empty":

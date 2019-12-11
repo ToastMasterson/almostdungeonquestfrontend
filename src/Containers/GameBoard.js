@@ -31,7 +31,7 @@ export default class GameBoard extends Component{
     }
 
     componentDidMount(){
-        fetch('http://localhost:3000/tiles')
+        fetch('https://almostdungeonquest.herokuapp.com/tiles')
         .then(response => response.json())
         .then(result => this.setState({allTiles: result}))
     }
@@ -83,14 +83,10 @@ export default class GameBoard extends Component{
     }
 
     generateCard = (tile) => {
-        console.log("here")
-        console.log(parseInt(tile))
-        console.log(this.state.currentTile)
         if (parseInt(tile) === parseInt(this.state.currentTile) - 1){
             this.setState({direction: "right"}, () => this.matchTile(tile))
         } 
         else if (parseInt(tile) === parseInt(this.state.currentTile) + 1){
-            console.log("left")
             this.setState({direction: "left"}, () => this.matchTile(tile))
         }
         else if (parseInt(tile) === parseInt(this.state.currentTile) - 13){

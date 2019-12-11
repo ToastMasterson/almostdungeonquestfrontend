@@ -14,37 +14,30 @@ class Trap extends Component {
         this.setState({isWorking: true})
         let rollTwelve = Math.floor(Math.random() * Math.floor(this.state.dTwelve.length))
         let rollSix = Math.floor(Math.random() * Math.floor(this.state.dSix.length))
-        console.log(this.props.player.agility)
-        console.log(rollTwelve, rollSix)
         switch (this.props.trap.name) {
             case "Cave In":
-                console.log(rollTwelve, this.props.player.agility)
                 (rollTwelve <= this.props.player.agility)
                     ? this.setState({message: "You've successfully passed through! Please continue."}, () => window.setTimeout(()=>this.props.continue(), 2000))
                     : this.props.playerLife(1) 
                         this.setState({message: `You rolled a ${rollTwelve}.  Lose 1 life and continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
                 break;
             case "Crossfire":
-                console.log(rollTwelve, this.props.player.armor)
                 let cFDamage = rollTwelve - this.props.player.armor
                 if(cFDamage < 0){cFDamage = 0}
                 this.props.playerLife(cFDamage)
                 this.setState({message: `You rolled a ${rollTwelve}. You lose ${cFDamage} life points.  Please continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
                 break;
             case "Poisonous Snakes":
-                console.log(rollSix, rollSix - 3)
                 let pSDamage = rollSix - 3
                 if (pSDamage < 0){pSDamage = 0}
                 this.props.playerLife(pSDamage)
                 this.setState({message: `You rolled a ${rollSix}. You lose ${pSDamage} life points. Please continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
                 break;
             case "Explosion":
-                console.log(rollSix)
                 this.props.playerLife(rollSix)
                 this.setState({message: `You rolled a ${rollSix}. You lose ${rollSix} life points. Please continue.`}, () => window.setTimeout(()=>this.props.continue(), 2000))
                 break;
             case "Giant Spider":
-                console.log(rollSix)
                 const passingNumbers = [1,2,3]
                 passingNumbers.includes(rollSix)
                     ? this.setState({message: `You rolled a ${rollSix}. You kill the spider and move on!`}, () => window.setTimeout(()=>this.props.continue(), 2000))

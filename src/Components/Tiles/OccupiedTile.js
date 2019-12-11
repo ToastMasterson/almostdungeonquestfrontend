@@ -7,7 +7,6 @@ export default class OccupiedTile extends Component {
         return this.props.goBack
             ? this.props.goBack(this.props.tile[0][number], number)
             : null
-        // console.log()
     }
 
     render(){

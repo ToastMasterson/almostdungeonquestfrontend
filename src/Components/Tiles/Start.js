@@ -8,12 +8,6 @@ const Start = (props) => {
             : props.startGame
                 ? props.startGame(event.target.getAttribute("number"))
                 : null
-        // if(props.didStart === false){
-        //     return props.startGame(event.target.getAttribute("number"))
-        // }
-        // else{
-        //     return props.goBack(null, event.target.getAttribute("number"))
-        // }
     )
 
         return(

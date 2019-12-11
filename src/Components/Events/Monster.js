@@ -25,7 +25,6 @@ class Monster extends Component {
         this.setState({isWorking: true})
         const randomIndex = Math.floor(Math.random() * Math.floor(this.state.combatArray.length))
         const monsterMove = this.state.combatArray[randomIndex]
-        console.log(event.target.innerText)
         switch(event.target.innerText){
             case "Mighty Blow":
                 if (monsterMove === "Mighty Blow"){

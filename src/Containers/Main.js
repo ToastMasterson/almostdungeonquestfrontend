@@ -20,13 +20,13 @@ class Main extends Component {
     }
 
     componentDidMount(){
-        fetch('http://localhost:3000/room_cards')
+        fetch('https://almostdungeonquest.herokuapp.com/room_cards')
         .then(response => response.json())
         .then(result => this.setState({roomCards: result}))
-        fetch('http://localhost:3000/monsters')
+        fetch('https://almostdungeonquest.herokuapp.com/monsters')
         .then(response => response.json())
         .then(result => this.setState({monsters: result}))
-        fetch('http://localhost:3000/trap_cards')
+        fetch('https://almostdungeonquest.herokuapp.com/trap_cards')
         .then(response => response.json())
         .then(result => this.setState({traps: result}))
     }
@@ -52,7 +52,6 @@ class Main extends Component {
     }
 
     triggerEvent = (kind) => {
-        console.log(kind)
         switch (kind) {
             case "Empty":
                 this.setState({inEvent: false, currentCard: false, currentEvent: "Move"})

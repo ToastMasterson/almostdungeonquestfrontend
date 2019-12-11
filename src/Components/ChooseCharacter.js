@@ -7,7 +7,7 @@ export default class ChooseCharacter extends Component {
     }
 
     componentDidMount(){
-        fetch('http://localhost:3000/characters').then(response => response.json())
+        fetch('https://almostdungeonquest.herokuapp.com/characters').then(response => response.json())
         .then(result => this.setState({characters: result}))
     }
 
